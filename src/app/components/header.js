@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <header className="w-full">
-      <nav className="bg-slate-100 w-full border-b border-slate-500 text-slate-800 shadow-2xl">
+      <nav className="relative z-50 bg-slate-100 w-full border-b border-slate-500 text-slate-800 shadow-2xl">
         {/* Top bar */}
         <div className="flex items-center justify-between md:justify-start px-4 h-16">
           {/* Logo */}
@@ -236,7 +236,7 @@ export default function Header() {
         <button
           type="button"
           aria-label="Close menu overlay"
-          className="md:hidden fixed inset-0 bg-black/10"
+          className="md:hidden fixed inset-0 z-40 bg-black/10"
           onClick={() => setMobileOpen(false)}
         />
       )}

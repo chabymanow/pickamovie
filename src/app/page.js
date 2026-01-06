@@ -53,7 +53,7 @@ export default async function Home() {
                 <div className="absolute -top-10 w-18 h-18 bg-slate-100 border border-slate-700 rounded-full flex flex-row justify-center items-center shadow-md shadow-slate-700">
                   <img src="/assets/images/database.svg" alt="Calendar" className="w-15 h-15" />
                 </div>
-                <h5 className="mt-2 mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Data source:</h5>
+                <h5 className="mt-2 mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Data source: TMDB</h5>
                 <p>Millions of movies, TV shows and people to discover. Explore now.</p>
                 <a className="w-fit h-fit px-4 py-2 bg-blue-600 rounded-full font-bold text-slate-300 mt-5 cursor-pointer" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">The Movie Database</a>
             </div>
