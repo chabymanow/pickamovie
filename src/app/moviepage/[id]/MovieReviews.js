@@ -15,19 +15,16 @@ export default function MovieReviews({ movie_reviews }){
       <div className="relative">
         <div
            className={[
-                "w-10/12 mx-auto flex flex-col gap-5 transition-all duration-300",
+                "w-full md:w-10/12 mx-auto flex flex-col gap-5 transition-all duration-300",
                 isOpen
                 ? "max-h-none"
                 : "max-h-75 overflow-hidden fade-mask",
             ].join(" ")}
         >
           {movie_reviews.map((review) => (
-            <div
-              key={review.id}
-              className="w-full p-5 border border-slate-300 rounded-xl flex flex-col"
-            >
+            <div key={review.id} className="w-full p-2 md:p-3 lg:p-5 border border-slate-300 rounded-xl flex flex-col">
               <div className="mb-4">
-                <p className="text-xl font-semibold underline">
+                <p className=" text-md md:text-lg lg:text-2xl font-semibold underline">
                   Review by: {review.author}
                 </p>
                 <p className="text-xs">
@@ -35,22 +32,18 @@ export default function MovieReviews({ movie_reviews }){
                 </p>
               </div>
 
-<div className="prose prose-slate max-w-none dark:prose-invert">
-  <ReactMarkdown
-    remarkPlugins={[remarkGfm]}
-    rehypePlugins={[rehypeRaw]}
-  >
-    {review.content}
-  </ReactMarkdown>
-</div>
+              <div className="prose prose-slate max-w-none dark:prose-invert text-sm md:text-md lg:text-lg">
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} >
+                  {review.content}
+                </ReactMarkdown>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Fade overlay when collapsed */}
         {!isOpen && (
-          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-20 
-                  bg-linear-to-t from-slate-50/90 to-transparent backdrop-blur-[1px]" />
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-20 bg-linear-to-t from-slate-50/90 to-transparent backdrop-blur-[1px]" />
         )}
       </div>
 
