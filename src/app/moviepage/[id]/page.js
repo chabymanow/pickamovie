@@ -10,43 +10,7 @@ export default async function MoviePage({ params }) {
   const { id } = await params;
   const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
     // const URL = "https://api.themoviedb.org/3/movie/popular";
-  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const cast_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const video_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const images_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/images`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const review_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const details_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
-  const recommendations_res = await fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US`, {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,videos,images,reviews,external_ids,recommendations`, {
       headers: {
           Authorization: `Bearer ${ACCESS_TOKEN}`,
           accept: "application/json",
@@ -56,33 +20,14 @@ export default async function MoviePage({ params }) {
   if (!res.ok) {
     throw new Error("Failed to fetch movie. Id: " + id + " Status: " + res.status);
   }
-  if (!cast_res.ok) {
-    throw new Error("Failed to fetch movie cast. Id: " + id + " Status: " + cast_res.status);
-  }
-  if (!video_res.ok) {
-    throw new Error("Failed to fetch movie videos. Id: " + id + " Status: " + video_res.status);
-  }
-  if (!images_res.ok) {
-    throw new Error("Failed to fetch movie images. Id: " + id + " Status: " + images_res.status);
-  }
-  if (!review_res.ok) {
-    throw new Error("Failed to fetch movie images. Id: " + id + " Status: " + review_res.status);
-  }
-  if (!details_res.ok) {
-    throw new Error("Failed to fetch movie images. Id: " + id + " Status: " + details_res.status);
-  }
-  if (!recommendations_res.ok) {
-    throw new Error("Failed to fetch movie images. Id: " + id + " Status: " + recommendations_res.status);
-  }
 
   const movie = await res.json();
-  const movie_cast = await cast_res.json();
-  const movie_videos = await video_res.json();
-  const movie_images = await images_res.json();
-  const movie_reviews = await review_res.json();
-  const movie_details = await details_res.json();
-  const movie_recommendations = await recommendations_res.json();
-  
+  const movie_cast = await movie.credits;
+  const movie_videos = await movie.videos;
+  const movie_images = await movie.images;
+  const movie_reviews = await movie.reviews;
+  const movie_details = await movie.external_ids;
+  const movie_recommendations = await movie.recommendations;
 
   return (
     <div>
