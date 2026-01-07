@@ -59,8 +59,11 @@ export default function MovieHero({ movie }) {
   const runIdRef = useRef(0);
 
   useEffect(() => {
-    if (!posterUrl) return;
+    setBg(null);
+  }, [movie.id]);
 
+  useEffect(() => {
+    if (!posterUrl) return;
     const runId = ++runIdRef.current; // unique id for this run
     const img = new Image();
     img.crossOrigin = "anonymous";
