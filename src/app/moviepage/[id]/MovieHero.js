@@ -63,21 +63,15 @@ export default function MovieHero({ movie }) {
   }, [posterUrl, movie.poster_path]);
 
   return (
-    <div
-      className="w-full min-h-screen md:min-h-11/12 relative p-7"
-      style={{ backgroundColor: bg }}
-    >
+    <div className="relative isolate flex flex-row justtify-center md:justify-start items-center w-full min-h-screen md:min-h-[70vh] p-7 overflow-hidden" style={{ backgroundColor: bg }} >
       {/* background image layer */}
-      <div className="absolute inset-0 blur-[1px] opacity-20 overflow-hidden">
-        <img
-          className="absolute top-0 left-0 w-full -translate-y-[20%]"
-          src={posterUrl}
-          alt={movie.title}
-        />
+      <div className="absolute inset-0 z-0">
+        <img src={posterUrl} alt="" className="w-full h-full object-cover object-top opacity-30 blur-[5px]" />
+        <div className="absolute inset-0 opacity-25" style={{ backgroundColor: bg }} />
       </div>
 
       {/* content */}
-      <div className="relative w-[95%] mx-auto flex flex-row gap-5 text-white flex-wrap md:flex-nowrap">
+      <div className="relative w-[99%] lg:w-[70%] lg:ml-10 flex flex-row gap-5 text-white flex-wrap md:flex-nowrap">
         <img
           className="w-full max-w-xs mx-auto md:mx-0 md:h-auto md:w-auto shadow-md shadow-gray-700"
           src={posterUrl}
@@ -107,24 +101,16 @@ export default function MovieHero({ movie }) {
             ))}
           </div>
 
-          
-
             <p className="mt-5 text-xl font-semibold">Overview</p>
-            <p className="text-md leading-relaxed">{movie.overview}</p>
+            <p className=" text-[.8rem] xl:text-[1.1rem] leading-relaxed">{movie.overview}</p>
 
-            <div className="mt-5 flex flex-col gap-2 text-[1.1rem]">
-                <p>
-                    Status: <span className="text-slate-200">{movie.status}</span>
-                </p>
-                <p >
-                    Rating: <span className="text-slate-200">{Math.round(movie.vote_average * 10)}%</span>
-                </p>
-                <p>
-                    Original language: <span className="text-slate-200">{movie.original_language.toUpperCase()}</span>
-                </p>
+            <div className="mt-5 flex flex-col gap-1 text-[.8rem] xl:text-lg">
+                <p>Status: <span className="text-myOffWhite font-bold">{movie.status}</span></p>
+                <p >Rating: <span className="text-myOffWhite font-bold">{Math.round(movie.vote_average * 10)}%</span></p>
+                <p>Original language: <span className="text-myOffWhite font-bold">{movie.original_language.toUpperCase()}</span></p>
                 <p>
                     Budget:
-                    <span className="text-slate-200">
+                    <span className="text-myOffWhite font-bold">
                         {" "}
                         {new Intl.NumberFormat("en-US", {
                             style: "currency",
@@ -135,7 +121,7 @@ export default function MovieHero({ movie }) {
                 </p>
                 <p>
                     Revenue:
-                    <span className="text-slate-200">
+                    <span className="text-myOffWhite font-bold">
                         {" "}
                         {new Intl.NumberFormat("en-US", {
                             style: "currency",
@@ -145,7 +131,7 @@ export default function MovieHero({ movie }) {
                     </span>
                 </p>
                 <p>
-                    Official website: <a className="text-slate-200" href={movie.homepage} target="_blank" rel="noopener noreferrer">{movie.homepage}</a>
+                    Official website:<br /> <a className="text-myOffWhite font-bold" href={movie.homepage} target="_blank" rel="noopener noreferrer">{movie.homepage}</a>
                 </p>
             </div>
         </div>

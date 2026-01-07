@@ -28,7 +28,7 @@ export default function MovieDetails({ movie_details, movie_companies }) {
                         )}
                     </div>
                 </div>
-                <div className="w-5/12">
+                <div className="w-full text-sm md:text-md lg:text-lg">
                     <h2 className="text-xl font-semibold mb-4">Social Network</h2>
                     <div className="flex flex-col gap-3">
                         {movie_details.imdb_id !== null ? (
