@@ -32,9 +32,10 @@ export default async function Home() {
   const popular_data = await popular_res.json();
 
   return (
+    
       <main className="flex flex-col items-start justify-start min-h-screen w-screen sm:items-start bg-myWhite">
         <HomeHeader movie_discover={header_movie} />
-        <section className="w-screen mt-2 p-10 bg-myWhite text-center">
+        <section className="w-screen  max-w-[1800px] mx-auto mt-2 p-10 bg-myWhite text-center">
           
             <span className="block text-lg md:text-2xl lg:text-3xl font-bold mb-3">Choosing a movie shouldn’t feel like work.</span>
             <p className="text-md md:text-2xl lg:text-3xl">
@@ -46,9 +47,35 @@ export default async function Home() {
               <a className="underline font-bold text-slate-800 mx-2" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">The Movie Database (TMDB)</a>
               and keeps things simple, so you can focus on discovering a good film and getting straight to watching it.
             </p>
-          
-          
-          <div className="w-12/12 md:w-8/12 mx-auto flex flex-row justify-around items-center flex-wrap gap-15 lg:gap-10 mt-20">
+
+            <div className="w-full md:w-11/12 xl:w-8/12 mx-auto flex flex-row justify-center lg:justify-around items-center gap-5 flex-wrap mt-10 mb-15">
+              <Link href="/popular">
+                <button className="group relative inline-flex h-14 items-center justify-center rounded-full bg-sky-900 py-1 pl-6 pr-14 font-medium text-neutral-50 cursor-pointer shadow-md shadow-slate-500 whitespace-nowrap min-w-72">
+                  <span className="z-10 pr-2">Check the popular movies</span>
+                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-sky-600 transition-[width] group-hover:w-[calc(100%-8px)]">
+                    <div className="mr-3.5 flex items-center justify-center">
+                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-50">
+                        <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </button>
+              </Link>
+              <Link href="/upcoming">
+                <button className="group relative inline-flex h-14 items-center justify-center rounded-full bg-orange-700 py-1 pl-6 pr-14 font-medium text-neutral-50 cursor-pointer shadow-md shadow-slate-500 whitespace-nowrap">
+                  <span className="z-10 pr-2">Check the upcoming movies</span>
+                  <div className="absolute right-1 inline-flex h-12 w-12 items-center justify-end rounded-full bg-orange-500 transition-[width] group-hover:w-[calc(100%-8px)]">
+                    <div className="mr-3.5 flex items-center justify-center">
+                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-50">
+                        <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </button>
+              </Link>
+            </div>
+
+          <div className="w-12/12 md:w-full mx-auto flex flex-row justify-around items-center flex-wrap gap-15 lg:gap-10 mt-20">
             <div className="relative w-full lg:w-96 h-52 p-6 rounded-2xl border border-blue-500 rounded-base text-white flex flex-col justify-center items-center shadow-lg shadow-slate-600 bg-linear-to-b from-slate-500 to-slate-800">
                 <div className="absolute -top-10 w-18 h-18 bg-slate-100 border border-slate-700 rounded-full flex flex-row justify-center items-center shadow-md shadow-slate-700">
                   <img src="/assets/images/database.svg" alt="Calendar" className="w-15 h-15" />

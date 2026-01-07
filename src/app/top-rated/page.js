@@ -56,7 +56,7 @@ export default function Popular() {
             href={`/moviepage/${movie.id}`}
             className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold"
           >
-            <div className="group w-full h-[460px] flex flex-col rounded relative overflow-hidden shadow-gray-400 shadow-md">
+            <div className="group w-full h-115 flex flex-col rounded-xl relative overflow-hidden shadow-gray-400 shadow-md hover:shadow-sm hover:shadow-gray-700 transition-transform duration-600 ease-out">
               <div className="w-full h-72 relative mb-2 flex-1">
                 <Image
                   src={
@@ -67,7 +67,7 @@ export default function Popular() {
                   alt={movie.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 240px, 208px"
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-110 rounded-lg shadow-lg shadow-slate-400 hover:shadow-2xl hover:shadow-gray-500"
                 />
               </div>
 
@@ -75,7 +75,7 @@ export default function Popular() {
                 {Math.round(movie.vote_average * 10)}%
               </div>
 
-              <div className="px-2 mt-auto pb-3 h-16">
+              <div className="px-2 mt-auto pb-3 h-16 pt-5">
                 <p className="text-md font-semibold">{movie.title}</p>
                 <p className="text-sm font-light">
                   Release Date:{" "}

@@ -104,7 +104,7 @@ export default function MovieHero({ movie }) {
             <p className="mt-5 text-xl font-semibold">Overview</p>
             <p className=" text-[.8rem] md:text-[1rem] xl:text-[1.1rem] leading-relaxed">{movie.overview}</p>
 
-            <div className="mt-5 flex flex-col gap-1 text-[.8rem] xl:text-lg">
+            <div className="mt-5 flex flex-col gap-1 text-[.8rem] md:text-[1rem] xl:text-lg">
                 <p>Status: <span className="text-myOffWhite font-bold">{movie.status}</span></p>
                 <p >Rating: <span className="text-myOffWhite font-bold">{Math.round(movie.vote_average * 10)}%</span></p>
                 <p>Original language: <span className="text-myOffWhite font-bold">{movie.original_language.toUpperCase()}</span></p>
