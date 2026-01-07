@@ -4,7 +4,6 @@ export default function MovieVideos({ movie_videos }) {
     const youtubeVideos = (movie_videos?.results ?? []).filter(v => v.site === "YouTube");
     const main = youtubeVideos[0];
     const side = youtubeVideos.slice(1, 5);
-    console.log(main);
     return (
         <div>
         <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Videos</h2>

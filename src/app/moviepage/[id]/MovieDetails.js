@@ -16,7 +16,7 @@ export default function MovieDetails({ movie_details, movie_companies }) {
                                 <Image
                                     src={
                                         comp.logo_path
-                                        ? `https://image.tmdb.org/t/p/w500${comp.logo_path}`
+                                        ? `https://image.tmdb.org/t/p/original${comp.logo_path}`
                                         : "/assets/images/no_logo.png"
                                     }
                                     alt={comp.name}

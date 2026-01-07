@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function MovieRecommendations({ movie_recommendations }){
-    console.log(movie_recommendations);
     return(
         <div>
             <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Recommendations</h2>
