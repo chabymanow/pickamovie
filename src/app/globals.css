@@ -70,3 +70,7 @@ body {
     background-image: linear-gradient(#0038d3);
     animation: rotate 4s linear infinite;
 }
+
+.personBio p{
+  margin-bottom: 15px;
+}

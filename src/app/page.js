@@ -35,7 +35,7 @@ export default async function Home() {
     
       <main className="flex flex-col items-start justify-start min-h-screen w-screen sm:items-start bg-myWhite">
         <HomeHeader movie_discover={header_movie} />
-        <section className="w-screen  max-w-[1800px] mx-auto mt-2 p-10 bg-myWhite text-center">
+        <section className="w-screen max-w-450 mx-auto mt-2 p-10 bg-myWhite text-center">
           
             <span className="block text-lg md:text-2xl lg:text-3xl font-bold mb-3">Choosing a movie shouldn’t feel like work.</span>
             <p className="text-md md:text-2xl lg:text-3xl">

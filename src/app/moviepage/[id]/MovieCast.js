@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 export default function MovieCast({ movie_cast }){
@@ -17,7 +18,8 @@ export default function MovieCast({ movie_cast }){
         <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Cast</h2>
         <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(170px,1fr))]">
             {visibleCast.map((member) => (
-                <div key={member.id} className="group bg-gray-100 rounded-lg overflow-hidden flex flex-col border border-gray-300 shadow-md hover:shadow-lg hover:cursor-pointer h-90 z-10">
+                 <Link key={member.id} href={`/people/persondetails/${member.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
+                <div className="group bg-gray-100 rounded-lg overflow-hidden flex flex-col border border-gray-300 shadow-md hover:shadow-lg hover:cursor-pointer h-90 z-10">
                     <div className="relative overflow-hidden h-full">
                         <Image
                             src={
@@ -36,9 +38,10 @@ export default function MovieCast({ movie_cast }){
                         <p className="text-sm text-slate-500">{member.character}</p>
                     </div>
                 </div>
+                </Link>
             ))}
             </div>
-
+            
         {cast.length > initialCount && (
         <button
           type="button"
