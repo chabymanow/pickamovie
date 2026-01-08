@@ -222,10 +222,10 @@ export default async function MoviePage({ params }) {
         <MovieVideos youtubeVideos={youtubeVideos} />
 
         <section className="mb-20">
-                      <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Backdrops</h2>
-                <Link className="mr-10 py-2 px-8 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${movie.id}/backdrops`}>
-                    See all backdrops..
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${movie.id}/backdrops`}>
+                    See all...
                 </Link>
             </div>
             <div className="w-full flex gap-4 pb-4 overflow-x-auto overflow-y-hidden [scrollbar-gutter:stable]">
@@ -252,8 +252,8 @@ export default async function MoviePage({ params }) {
             
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Posters</h2>
-                <Link className="mr-10 py-2 px-8 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${movie.id}/posters`}>
-                    See all posters..
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${movie.id}/posters`}>
+                    See all...
                 </Link>
             </div>
             <div className="w-full flex gap-4 pb-4 overflow-x-auto overflow-y-hidden [scrollbar-gutter:stable]">
