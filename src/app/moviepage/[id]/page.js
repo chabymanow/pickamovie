@@ -1,5 +1,6 @@
 import MovieCast from "./MovieCast";
 import MovieReviews from "./MovieReviews";
+import MovieVideos from "./MovieVideos";
 import Image from "next/image";
 import Link from "next/link";
 import { averageColorFromUrl, rgbToCss } from "@/lib/avgColor";
@@ -217,53 +218,10 @@ export default async function MoviePage({ params }) {
           </div>
         </section>
         <MovieCast movie_cast={movie_cast} />
-        <div className="mt-5 relative bg-gray-200 h-0.5 after:absolute after:top-0 after:left-0 after:w-full after:h-full after:pointer-events-none after:z-20 after:shadow-sm"></div>
         <MovieReviews movie_reviews={movie_reviews.results} />
-        <div className="mt-5 relative bg-gray-200 h-0.5 after:absolute after:top-0 after:left-0 after:w-full after:h-full after:pointer-events-none after:z-20 after:shadow-sm"></div>
-        <section>
-          <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Videos</h2>
-          <div className="grid gap-4 lg:grid-cols-5 lg:grid-rows-4 w-8/12 mx-auto">
-              {/* Main video (spans 4 rows) */}
-              <div className="lg:col-span-4 lg:row-span-4">
-              <div className="h-full rounded-lg overflow-hidden">
-                  {main ? (
-                  <iframe
-                      className="w-full h-full"
-                      src={`https://www.youtube.com/embed/${main.key}`}
-                      title={main.name}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                  />
-                  ) : (
-                  <div className="w-full h-full flex items-center justify-center text-sm text-slate-500 bg-slate-100">
-                      No trailer available
-                  </div>
-                  )}
-              </div>
-              </div>
+        <MovieVideos youtubeVideos={youtubeVideos} />
 
-              {/* Side videos (each takes 1 row) */}
-              {side.map((v) => (
-              <div key={v.id} className="rounded-lg overflow-hidden">
-                  <iframe
-                  className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${v.key}`}
-                  title={v.name}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  />
-              </div>
-              ))}
-
-              {/* If fewer than 4 side videos, optionally fill empty slots */}
-              {Array.from({ length: Math.max(0, 4 - side.length) }).map((_, idx) => (
-                  <div key={`empty-${idx}`} className="rounded-lg h-32 bg-transparent" />
-              ))}
-          </div>
-        </section>
-        <div className="mt-5 relative bg-gray-200 h-0.5 after:absolute after:top-0 after:left-0 after:w-full after:h-full after:pointer-events-none after:z-20 after:shadow-sm"></div>
-        <section>
+        <section className="mb-20">
                       <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Backdrops</h2>
                 <Link className="mr-10 py-2 px-8 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${movie.id}/backdrops`}>
@@ -318,7 +276,7 @@ export default async function MoviePage({ params }) {
                 ))}
             </div>
         </section>
-        <div className="mt-5 relative bg-gray-200 h-0.5 after:absolute after:top-0 after:left-0 after:w-full after:h-full after:pointer-events-none after:z-20 after:shadow-sm"></div>
+        
         <section>
           {movie_recommendations.results.length !== 0 ? (<>
             <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Recommendations</h2>
