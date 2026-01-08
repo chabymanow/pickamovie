@@ -3,6 +3,8 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { notFound } from "next/navigation";
+import { fetchPerson } from "@/lib/fetchPerson";
 
 function MovieCard({ cast }) {
   return (
@@ -41,20 +43,9 @@ function MovieCard({ cast }) {
 
 export default async function Popular({ params }) {
     const { id } = await params;
-    const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
-    // const URL = "https://api.themoviedb.org/3/movie/popular";
-    const res = await fetch(`https://api.themoviedb.org/3/person/${id}?append_to_response=combined_credits,images,external_ids&language=en-US`, {
-        headers: {
-            Authorization: `Bearer ${ACCESS_TOKEN}`,
-            accept: "application/json",
-        },
-    });
 
-    if (!res.ok) {
-        throw new Error("Failed to fetch person. Id: " + id + " Status: " + res.status);
-    }
-
-    const person = await res.json();
+    const person = await fetchPerson(id);
+    if (!person) return notFound();
     const act_movie = (person.combined_credits.cast ?? [])
     .filter((c) => c.media_type === "movie" && c.release_date)
     .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());

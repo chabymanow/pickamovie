@@ -4,30 +4,21 @@ import MovieVideos from "./MovieVideos";
 import Image from "next/image";
 import Link from "next/link";
 import { averageColorFromUrl, rgbToCss } from "@/lib/avgColor";
+import { notFound } from "next/navigation";
+import { fetchMovie } from "@/lib/fetchMovie";
 
 export default async function MoviePage({ params }) {
   const { id } = await params;
-  const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
-    // const URL = "https://api.themoviedb.org/3/movie/popular";
-  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,videos,images,reviews,external_ids,recommendations`, {
-      headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          accept: "application/json",
-      },
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch movie. Id: " + id + " Status: " + res.status);
-  }
-
-  const movie = await res.json();
-  const movie_cast = await movie.credits;
-  const movie_videos = await movie.videos;
-  const movie_images = await movie.images;
-  const movie_reviews = await movie.reviews;
-  const movie_details = await movie.external_ids;
-  const production_companies = await movie.production_companies;
-  const movie_recommendations = await movie.recommendations;
+    const movie = await fetchMovie(id);
+    if (!movie) return notFound();
+    const movie_cast = await movie.credits;
+    const movie_videos = await movie.videos;
+    const movie_images = await movie.images;
+    const movie_reviews = await movie.reviews;
+    const movie_details = await movie.external_ids;
+    const production_companies = await movie.production_companies;
+    const movie_recommendations = await movie.recommendations;
 
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
