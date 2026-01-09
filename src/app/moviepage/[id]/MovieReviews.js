@@ -43,7 +43,7 @@ export default function MovieReviews({ movie_reviews }){
 
         {/* Fade overlay when collapsed */}
         {!isOpen && (
-          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-20 bg-linear-to-t from-slate-50/90 to-transparent backdrop-blur-[1px]" />
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-34 bg-linear-to-t from-white to-transparent backdrop-blur-[1px]" />
         )}
       </div>
 
