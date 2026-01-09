@@ -78,20 +78,16 @@ export default function SeriesList({ type }) {
             >
               <div className="group w-full flex flex-col rounded-xl relative overflow-hidden shadow-md">
                 {/* Poster box with stable aspect ratio */}
-                <div className="relative w-full aspect-[2/3]">
-                  <Image
-                    src={
-                      s.poster_path
-                        ? `https://image.tmdb.org/t/p/w500${s.poster_path}`
-                        : "/assets/images/no_image.png"
-                    }
-                    alt={s.original_name ?? "Series poster"}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 240px, 208px"
-                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
-                    // Helps above-the-fold posters on mobile
-                    priority={idx < 6}
-                  />
+                <div className="relative w-full aspect-2/3">
+                <img
+                  src={
+                    s.poster_path
+                      ? `https://image.tmdb.org/t/p/w185${s.poster_path}`
+                      : "/assets/images/no_image.png"
+                  }
+                  alt={series.original_name ?? "Series poster"}
+                  className="w-full h-full object-cover"
+                />
                 </div>
 
                 <div className="w-10 h-10 flex items-center justify-center rounded-full p-2 text-white bg-slate-900 border-2 border-orange-500 text-sm absolute top-2 right-2 font-mono font-bold shadow-md">
