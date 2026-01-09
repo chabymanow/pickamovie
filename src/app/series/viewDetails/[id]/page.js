@@ -3,6 +3,7 @@ import Link from "next/link";
 import { averageColorFromUrl, rgbToCss } from "@/lib/avgColor";
 import { notFound } from "next/navigation";
 import { fetchSeries } from "@/lib/fetchData";
+import SeriesReviews from "./SeriesReviews";
 
 export default async function viewDetails({ params }) {
     const { id } = await params;
@@ -10,22 +11,16 @@ export default async function viewDetails({ params }) {
     const series = await fetchSeries(id);
     if (!series) return notFound();
 
-    const movie_cast = await series.credits;
-    const movie_videos = await series.videos;
     const movie_images = await series.images;
-    const movie_reviews = await series.reviews;
     const movie_details = await series.external_ids;
     const production_companies = await series.production_companies;
-    const movie_recommendations = await series.recommendations;
 
     const backdropUrl = `https://image.tmdb.org/t/p/w500${series.backdrop_path}`;
     const posterUrl = `https://image.tmdb.org/t/p/w500${series.poster_path}`;
     const rgb = posterUrl ? await averageColorFromUrl(posterUrl) : { r: 37, g: 99, b: 235 };
     const headerBackColour = rgbToCss(rgb, 1);
 
-    const youtubeVideos = (movie_videos?.results ?? []).filter(v => v.site === "YouTube");
-    const main = youtubeVideos[0];
-    const side = youtubeVideos.slice(1, 5);
+    const series_reviews = await series.reviews.results;
 
     const backdrops = (movie_images.backdrops ?? []).map(b => ({
         filePath: b.file_path,
@@ -141,11 +136,11 @@ export default async function viewDetails({ params }) {
       </div>
     </div>
 
-        <section className="p-10 px-20 background-white">
+        {/* <section className="p-5 px-6 lg:px-20 background-white">
           <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Details</h2>
           <div className="w-full">
                   <h2 className="text-xl font-semibold mb-4">Production Companies</h2>
-                  <div className="w-full h-fit flex flex-row flex-wrap justify-start gap-10">
+                  <div className="w-full h-fit flex flex-row flex-wrap justify-between gap-10">
                       {production_companies.map((comp) => 
                           <div key={comp.id}>
                               <p className="mb-2 text-center">{comp.name}</p>
@@ -158,15 +153,15 @@ export default async function viewDetails({ params }) {
                                   alt={comp.name}
                                   width={200}
                                   height={200}
-                                  className="w-32 max-w-52 h-auto rounded-md"
+                                  className="w-24 md:w-32 max-w-52 h-auto rounded-md"
                               />
                           </div>
                       )}
                   </div>
             </div>
-        </section>
+        </section> */}
 
-        <section className="f-full flex flex-row flex-wrap justify-between items-center gap-10 px-5 lg:px-20">
+        <section className="f-full flex flex-row flex-wrap justify-between items-center gap-10 px-5 lg:px-20 mt-10">
             <div className="w-full md:w-4/12 text-md md:text-md lg:text-lg">
                 <h2 className="text-xl font-semibold mb-4">Details</h2>
                 <div className="flex flex-col gap-3">
@@ -241,9 +236,39 @@ export default async function viewDetails({ params }) {
         </section>
 
         <section className="mb-20 px-2 lg:px-20">
+            <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Seasons</h2>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                {series.seasons.map((season) => (
+                    <div key={season.id} className="w-full flex flex-row justify-start items-center gap-3 flex-nowrap border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300">
+                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500${season.poster_path}` : "/assets/images/no_image.png"}
+                                    alt={season.name}
+                                    width={640}
+                                    height={480}
+                                    className="w-24 aspect-2/3 object-cover"
+                                />
+                        <div>                                
+                            <p>Season name: {season.name}</p>
+                            <p>{season.season_number}</p>
+                            <p>{season.episode_count}</p>
+                            <p><span className="text-slate-800 font-semibold">{new Date(season.air_date).toLocaleDateString("en-GB", {
+                                    day: "2-digit",
+                                    month: "2-digit",
+                                    year: "numeric",
+                                })}</span></p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section className="px-5 lg:px-20 mb-10 background-white">
+            <SeriesReviews series_reviews = {series_reviews} />
+        </section>
+
+        <section className="mb-20 px-2 lg:px-20">
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Backdrops</h2>
-                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${series.id}/backdrops`}>
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${series.id}/backdrops`}>
                     See all...
                 </Link>
             </div>
@@ -252,7 +277,7 @@ export default async function viewDetails({ params }) {
                     <div key={image.filePath} className="group rounded-xl overflow-hidden shrink-0 w-96">
                         <a className="block" href={`https://image.tmdb.org/t/p/original${image.filePath}`} target="_blank" rel="noopener noreferrer">
                             <div className="relative aspect-video overflow-hidden">
-                                <Image
+                                <img
                                     src={
                                         image.filePath
                                         ? `https://image.tmdb.org/t/p/w500${image.filePath}`
@@ -271,7 +296,7 @@ export default async function viewDetails({ params }) {
             
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Posters</h2>
-                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/moviepage/${series.id}/posters`}>
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${series.id}/posters`}>
                     See all...
                 </Link>
             </div>
@@ -279,7 +304,7 @@ export default async function viewDetails({ params }) {
                 {visible_posters.map((image) => (
                     <p key={image.filePath} className="group rounded-xl overflow-hidden shrink-0 w-62">
                         <a href={`https://image.tmdb.org/t/p/original${image.filePath}`} target="_blank">
-                            <Image
+                            <img
                                 src={
                                     image.filePath
                                     ? `https://image.tmdb.org/t/p/w500${image.filePath}`

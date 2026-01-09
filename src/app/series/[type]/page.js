@@ -2,7 +2,6 @@ import SeriesList from "./seriesList";
 import { notFound } from "next/navigation";
 
 export default async function Page({ params }) {
-  console.log("params:", params);
 
   const { type } = await params; // in your setup params may be Promise
 

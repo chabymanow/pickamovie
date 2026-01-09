@@ -82,7 +82,7 @@ export default function SeriesList({ type }) {
                 <img
                   src={
                     s.poster_path
-                      ? `https://image.tmdb.org/t/p/w185${s.poster_path}`
+                      ? `https://image.tmdb.org/t/p/w500${s.poster_path}`
                       : "/assets/images/no_image.png"
                   }
                   alt={series.original_name ?? "Series poster"}

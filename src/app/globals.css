@@ -71,6 +71,7 @@ body {
     animation: rotate 4s linear infinite;
 }
 
-.personBio p{
+.personBio p,
+.reviewText p{
   margin-bottom: 15px;
 }

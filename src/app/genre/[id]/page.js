@@ -15,7 +15,6 @@ export default async function Page({ params }) {
 
   const genre_list = await genre_res.json();
   const genre = genre_list.genres.find(g => { return g.id === Number(id)});
-  console.log(genre?.name)
 
   return <ByGenreClient genreId={id} genreName={genre.name}/>;
 }

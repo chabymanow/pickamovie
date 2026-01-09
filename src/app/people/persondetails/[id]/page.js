@@ -58,7 +58,6 @@ export default async function Popular({ params }) {
     const previewMovies = act_movie.slice(0, PREVIEW_COUNT);
     const restMovies = act_movie.slice(PREVIEW_COUNT);
 
-    console.log(person)
     return(
         <div>
             <section className="w-screen h-fit bg-linear-to-b from-slate-500 to-slate-800 pb-5">

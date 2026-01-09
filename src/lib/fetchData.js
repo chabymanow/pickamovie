@@ -35,7 +35,6 @@ export async function fetchPerson(id) {
   });
 
   // Log exactly what’s happening
-  console.log("TMDB person fetch:", { id, status: res.status, ok: res.ok, url });
 
   if (res.status === 404) return null;
 

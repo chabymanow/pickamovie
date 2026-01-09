@@ -17,7 +17,6 @@ export default async function Popular() {
     }
 
     const people_data = await res.json();
-    console.log(people_data);
 
     return (
         <div className="min-h-screen mb-30">

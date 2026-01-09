@@ -9,8 +9,7 @@ export async function GET(req, { params }) {
     return Response.json({ error: "Invalid type" }, { status: 400 });
   }
 
-  const url = `https://api.themoviedb.org/3/tv/${type}?language=en-GB&page=${page}`;
-  console.log(url);
+  const url = `https://api.themoviedb.org/3/tv/${type}?language=en-GB&page=${page}&append_to_response=reviews`;
 
   const res = await fetch(url, {
     headers: {
