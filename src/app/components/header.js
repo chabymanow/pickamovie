@@ -5,10 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 function NavLink({ href, children, onClick }) {
+  const handleClick = (e) => {
+    onClick?.(e);
+
+    // Close CSS focus-within dropdowns on desktop
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
+
   return (
-    <Link
-      href={href}
-      onClick={onClick}
+    <Link href={href} onClick={handleClick}
       className="block px-4 py-2 rounded-lg hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
     >
       {children}
@@ -95,9 +102,9 @@ export default function Header() {
                 role="menu"
               >
                 <NavLink href="/series/popular">Popular</NavLink>
-                <NavLink href="/series/top-rated">Top Rated</NavLink>
-                <NavLink href="/series/airing-today">Airing Today</NavLink>
-                <NavLink href="/series/on-the-air">On The Air</NavLink>
+                <NavLink href="/series/top_rated">Top Rated</NavLink>
+                <NavLink href="/series/airing_today">Airing Today</NavLink>
+                <NavLink href="/series/on_the_air">On The Air</NavLink>
               </div>
             </div>
 

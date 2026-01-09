@@ -93,8 +93,8 @@ export default async function Home() {
           <div className="w-full flex flex-row justify-around items-center gap-4 flex-wrap">
             {genre_list.genres.map((genre) => (
               <Link key={genre.id} href={`/genre/${genre.id}`} 
-                className="w-44 py-1 px-3 text-center whitespace-nowrap bg-linear-to-b from-green-500 to-green-700 rounded-2xl text-lg text-white font-semibold shadow-md shadow-slate-500 mb-3">
-                #{genre.name}
+                className="w-44 py-1 px-3 text-center whitespace-nowrap bg-linear-to-b from-orange-400 to-red-500 rounded-full text-lg text-white font-semibold shadow-md shadow-slate-500 mb-3 hover:shadow-sm hover:from-orange-700 hover:to-red-600">
+                {genre.name}
               </Link>
             ))}
           </div>
