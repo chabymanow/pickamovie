@@ -73,7 +73,7 @@ export default function SeriesList({ type }) {
           {series.map((s, idx) => (
             <Link
               key={s.id}
-              href={`/viewDetails/${s.id}`}
+              href={`./viewDetails/${s.id}`}
               className="block w-full text-sm font-semibold"
             >
               <div className="group w-full flex flex-col rounded-xl relative overflow-hidden shadow-md">
