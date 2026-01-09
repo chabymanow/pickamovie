@@ -32,10 +32,7 @@ export default async function PostersPage({ params }) {
   return (
     <div>
       <div className="mt-5 w-full h-16 px-10 bg-cyan-700 flex flex-row justify-between items-center text-white">
-            <h1 className="text-3xl font-semibold">{movie_data.original_name}</h1>
-          <Link href={`/moviepage/${id}`} className="mr-10 py-2 px-8 rounded-2xl text-md font-light w-fit bg-slate-600 shadow-md shadow-slate-500 hover:bg-slate-400 hover:shadow-sm">
-              Back to the movie
-          </Link>
+        <h1 className="text-3xl font-semibold">{movie_data.original_name}</h1>
       </div>
       <div className="p-10">
         <BackdropsView backdrops={movie_images.backdrops ?? []} />

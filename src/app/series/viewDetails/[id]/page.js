@@ -47,7 +47,7 @@ export default async function viewDetails({ params }) {
 
       {/* background image layer */}
       <div className="absolute inset-0 z-0">
-          <img src={backdropUrl} alt="" className="w-full h-full object-cover object-top blur-[3px] opacity-40" />
+          <img src={series.poster_path} alt="" className="w-full h-full object-cover object-top blur-[3px] opacity-40" />
 
         {/* 2) colour tint (this is what makes it “red/orange-ish”) */}
         <div
@@ -240,7 +240,7 @@ export default async function viewDetails({ params }) {
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {series.seasons.map((season) => (
                     <div key={season.id} className="w-full flex flex-row justify-start items-center gap-3 flex-nowrap border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300">
-                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500${season.poster_path}` : "/assets/images/no_image.png"}
+                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500${season.poster_path}` : `https://image.tmdb.org/t/p/w500${series.poster_path}`}
                                     alt={season.name}
                                     width={640}
                                     height={480}
