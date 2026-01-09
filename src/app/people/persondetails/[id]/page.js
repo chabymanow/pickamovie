@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { notFound } from "next/navigation";
-import { fetchPerson } from "@/lib/fetchPerson";
+import { fetchPerson } from "@/lib/fetchData";
 
 function MovieCard({ cast }) {
   return (

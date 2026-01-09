@@ -25,17 +25,29 @@ export default async function Home() {
   if (!popular_res.ok) {
       throw new Error("Failed to fetch popular movies");
   }
+
+  const genre_res = await fetch("https://api.themoviedb.org/3/genre/movie/list?language=en'", {
+      headers: {
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+          "Content-Type": "application/json",
+      },
+      });
+      
+  if (!genre_res.ok) {
+      throw new Error("Failed to fetch genre list");
+  }
    
 
   const movies_data = await res.json();
   const header_movie = movies_data.results.slice(0, 1);
   const popular_data = await popular_res.json();
+  const genre_list = await genre_res.json();
 
   return (
     
       <main className="flex flex-col items-start justify-start min-h-screen w-screen sm:items-start bg-myWhite">
         <HomeHeader movie_discover={header_movie} />
-        <section className="w-screen max-w-450 mx-auto mt-2 p-10 bg-myWhite text-center">
+        <section className="w-screen max-w-500 mx-auto mt-2 p-10 bg-myWhite text-center">
           
             <span className="block text-lg md:text-2xl lg:text-3xl font-bold mb-3">Choosing a movie shouldn’t feel like work.</span>
             <p className="text-md md:text-2xl lg:text-3xl">
@@ -74,32 +86,17 @@ export default async function Home() {
                 </button>
               </Link>
             </div>
+        </section>
 
-          <div className="w-12/12 md:w-full mx-auto flex flex-row justify-around items-center flex-wrap gap-15 lg:gap-10 mt-20">
-            <div className="relative w-full lg:w-96 h-52 p-6 rounded-2xl border border-blue-500 rounded-base text-white flex flex-col justify-center items-center shadow-lg shadow-slate-600 bg-linear-to-b from-slate-500 to-slate-800">
-                <div className="absolute -top-10 w-18 h-18 bg-slate-100 border border-slate-700 rounded-full flex flex-row justify-center items-center shadow-md shadow-slate-700">
-                  <img src="/assets/images/database.svg" alt="Calendar" className="w-15 h-15" />
-                </div>
-                <h5 className="mt-2 mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Data source: TMDB</h5>
-                <p>Millions of movies, TV shows and people to discover. Explore now.</p>
-                <a className="w-fit h-fit px-4 py-2 bg-blue-600 rounded-full font-bold text-slate-300 mt-5 cursor-pointer" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">The Movie Database</a>
-            </div>
-
-            <div className="relative w-full lg:w-96 h-52 p-6 rounded-2xl border border-blue-500 rounded-base text-white flex flex-col justify-center items-center shadow-lg shadow-slate-600 bg-linear-to-b from-slate-500 to-slate-800">
-                <div className="absolute -top-10 w-18 h-18 bg-slate-100 border border-slate-700 rounded-full flex flex-row justify-center items-center shadow-md shadow-slate-700">
-                  <img src="/assets/images/movie-ticket.svg" alt="Calendar" className="w-12 h-12" />
-                </div>
-                <h5 className="mt-2 mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">TMDB is a widely used</h5>
-                <p>Community-driven movie and TV database used by many apps and services.</p>
-            </div>
-
-            <div className="relative w-full lg:w-96 h-52 p-6 rounded-2xl border border-blue-500 rounded-base text-white flex flex-col justify-center items-center shadow-lg shadow-slate-600 bg-linear-to-b from-slate-500 to-slate-800">
-                <div className="absolute -top-10 w-18 h-18 bg-slate-100 border border-slate-700 rounded-full flex flex-row justify-center items-center shadow-md shadow-slate-700">
-                  <img src="/assets/images/movie.svg" alt="Calendar" className="w-15 h-15" />
-                </div>
-                <h5 className="mt-2 mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">No movie here!</h5>
-                <p>This site does not host or stream movies — it only displays metadata for discovery purposes.</p>
-            </div>
+        <section className="w-full md:w-11/12 xl:w-10/12 max-w-450 mx-auto mb-20 p-2 md:p-5 lg:p-10">
+        <h2 className="text-3xl font-bold mt-8 mb-10 text-myGray">Choose A Genre</h2>
+          <div className="w-full flex flex-row justify-around items-center gap-4 flex-wrap">
+            {genre_list.genres.map((genre) => (
+              <Link key={genre.id} href={`/genre/${genre.id}`} 
+                className="w-44 py-1 px-3 text-center whitespace-nowrap bg-linear-to-b from-green-500 to-green-700 rounded-2xl text-lg text-white font-semibold shadow-md shadow-slate-500 mb-3">
+                #{genre.name}
+              </Link>
+            ))}
           </div>
         </section>
 

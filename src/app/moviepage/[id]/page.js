@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { averageColorFromUrl, rgbToCss } from "@/lib/avgColor";
 import { notFound } from "next/navigation";
-import { fetchMovie } from "@/lib/fetchMovie";
+import { fetchMovie } from "@/lib/fetchData";
 
 export default async function MoviePage({ params }) {
   const { id } = await params;
