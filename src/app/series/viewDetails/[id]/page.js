@@ -18,7 +18,7 @@ export default async function viewDetails({ params }) {
     const production_companies = await series.production_companies;
     const movie_recommendations = await series.recommendations;
 
-    const backdropUrl = `https://image.tmdb.org/t/p/original${series.backdrop_path}`;
+    const backdropUrl = `https://image.tmdb.org/t/p/w500${series.backdrop_path}`;
     const posterUrl = `https://image.tmdb.org/t/p/w500${series.poster_path}`;
     const rgb = posterUrl ? await averageColorFromUrl(posterUrl) : { r: 37, g: 99, b: 235 };
     const headerBackColour = rgbToCss(rgb, 1);
