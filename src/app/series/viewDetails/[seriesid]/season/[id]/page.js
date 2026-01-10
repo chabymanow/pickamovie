@@ -240,7 +240,7 @@ export default async function viewDetails({ params }) {
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {series.seasons.map((season) => (
                     <div key={season.id} className="w-full flex flex-row justify-start items-center gap-3 flex-nowrap border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300">
-                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w500${season.poster_path}` : `https://image.tmdb.org/t/p/w500${series.poster_path}`}
+                        <img src={season.poster_path ? `https://image.tmdb.org/t/p/w185${season.poster_path}` : `https://image.tmdb.org/t/p/w185${series.poster_path}`}
                                     alt={season.name}
                                     width={640}
                                     height={480}

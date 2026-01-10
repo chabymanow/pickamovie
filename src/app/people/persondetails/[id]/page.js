@@ -146,48 +146,60 @@ export default async function Popular({ params }) {
                   </div>
               </section>
 
+            {act_movie.length !== 0 ? (
                 <section className="w-11/12 lg:w-10/12 max-w-500 mt-10 mx-auto">
                     <h2 className="text-2xl font-bold mt-8 mb-7 text-slate-800">Filmography (Movies)</h2>
-                    <input id="moviesToggle" type="checkbox" className="peer sr-only" />
+                    <div className="relative">
+                        <input id="moviesToggle" type="checkbox" className="peer sr-only" />
+                    
+                        <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-hidden max-h-[500px] peer-checked:max-h-[9999px] transition-[max-height] duration-500 mb-10">
+                            {act_movie.map((cast) => (
+                                <Link key={cast.credit_id} href={`/moviepage/${cast.id}`} className="w-full">
+                                <MovieCard cast={cast} />
+                                </Link>
+                            ))}
+                        </div>
+                        <div className="pointer-events-none absolute bottom-10 left-0 w-full h-34 bg-linear-to-t from-white to-transparent backdrop-blur-[1px] peer-checked:hidden" />
+                    
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-hidden max-h-[500px] peer-checked:max-h-[9999px] transition-[max-height] duration-500 mb-10">
-                        {act_movie.map((cast) => (
-                            <Link key={cast.credit_id} href={`/moviepage/${cast.id}`} className="w-full">
-                            <MovieCard cast={cast} />
-                            </Link>
-                        ))}
+                        <label htmlFor="moviesToggle" className="mt-6 mx-auto w-fit cursor-pointer rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 peer-checked:hidden">
+                            Show full filmography
+                        </label>
+
+                        <label htmlFor="moviesToggle" className="mt-10 mx-auto w-fit hidden peer-checked:inline-flex cursor-pointer select-none rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                            Hide filmography
+                        </label>
                     </div>
-
-                    <label htmlFor="moviesToggle" className="mt-6 mx-auto w-fit cursor-pointer rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 peer-checked:hidden">
-                        Show full filmography
-                    </label>
-
-                    <label htmlFor="moviesToggle" className="mt-10 mx-auto w-fit hidden peer-checked:inline-flex cursor-pointer select-none rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
-                        Hide filmography
-                    </label>
                 </section>
+            ):(" ")} 
 
+            {act_tv.length !== 0 ? (
+                <section className="w-11/12 lg:w-10/12 max-w-500 mt-20 mx-auto">
+                    <h2 className="text-2xl font-bold mt-8 mb-7 text-slate-800">Television Appearances</h2>
+                    
+                    <div className="relative">
+                        <input id="tvToggle" type="checkbox" className="peer sr-only" />
+                        <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-hidden max-h-125 peer-checked:max-h-2499.75 transition-[max-height] duration-500 mb-10">
+                            {act_tv.map((cast) => (
+                                <Link key={cast.credit_id} href={`/series/viewDetails/${cast.id}`} className="w-full">
+                                <MovieCard cast={cast} />
+                                </Link>
+                            ))}
+                        </div>
+                        <div className="pointer-events-none absolute bottom-10 left-0 w-full h-34 bg-linear-to-t from-white to-transparent backdrop-blur-[1px] peer-checked:hidden" />
+                    
 
-             <section className="w-11/12 lg:w-10/12 max-w-500 mt-20 mx-auto">
-                <h2 className="text-2xl font-bold mt-8 mb-7 text-slate-800">Television Appearances</h2>
-                <input id="tvToggle" type="checkbox" className="peer sr-only" />
+                        <label htmlFor="tvToggle" className="w-fit cursor-pointer rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 peer-checked:hidden">
+                            Show full appearances
+                        </label>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-hidden max-h-[500px] peer-checked:max-h-[9999px] transition-[max-height] duration-500 mb-10">
-                    {act_tv.map((cast) => (
-                        <Link key={cast.credit_id} href={`/moviepage/${cast.id}`} className="w-full">
-                        <MovieCard cast={cast} />
-                        </Link>
-                    ))}
-                </div>
-
-                <label htmlFor="tvToggle" className="w-fit cursor-pointer rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 peer-checked:hidden">
-                    Show full appearances
-                </label>
-
-                <label htmlFor="tvToggle" className="w-fit hidden peer-checked:inline-flex cursor-pointer select-none rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
-                    Hide appearances
-                </label>
-            </section>
+                        <label htmlFor="tvToggle" className="w-fit hidden peer-checked:inline-flex cursor-pointer select-none rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">
+                            Hide appearances
+                        </label>
+                    </div>
+                </section>
+            ):(" ")}      
+            
 
             <section className="w-11/12 lg:w-10/12 max-w-500 mt-10 mx-auto text-sm md:text-md lg:text-lg mb-20">
                 <h2 className="text-2xl font-semibold mb-4">Images</h2>

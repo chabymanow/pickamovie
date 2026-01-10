@@ -167,9 +167,9 @@ export default function Header() {
                 <p className="px-4 text-xs font-semibold uppercase tracking-wide text-slate-500">Series</p>
                 <div className="mt-1">
                   <NavLink href="/series/popular" onClick={() => setMobileOpen(false)}>Popular</NavLink>
-                  <NavLink href="/series/top-rated" onClick={() => setMobileOpen(false)}>Top Rated</NavLink>
-                  <NavLink href="/series/airing-today" onClick={() => setMobileOpen(false)}>Airing Today</NavLink>
-                  <NavLink href="/series/on-the-air" onClick={() => setMobileOpen(false)}>On The Air</NavLink>
+                  <NavLink href="/series/top_rated" onClick={() => setMobileOpen(false)}>Top Rated</NavLink>
+                  <NavLink href="/series/airing_today" onClick={() => setMobileOpen(false)}>Airing Today</NavLink>
+                  <NavLink href="/series/on_the_air" onClick={() => setMobileOpen(false)}>On The Air</NavLink>
                 </div>
               </div>
 
