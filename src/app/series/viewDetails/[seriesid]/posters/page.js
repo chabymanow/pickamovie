@@ -2,11 +2,11 @@ import PostersView from "./PostersView";
 import Link from "next/link";
 
 export default async function PostersPage({ params }) {
-  const { id } = await params; 
+  const { seriesid } = await params; 
 
   const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
 
-  const images_res = await fetch(`https://api.themoviedb.org/3/tv/${id}/images`, {
+  const images_res = await fetch(`https://api.themoviedb.org/3/tv/${seriesid}/images`, {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
       accept: "application/json",
@@ -14,7 +14,7 @@ export default async function PostersPage({ params }) {
     cache: "no-store",
   });
 
-  const movie = await fetch(`https://api.themoviedb.org/3/tv/${id}`, {
+  const movie = await fetch(`https://api.themoviedb.org/3/tv/${seriesid}`, {
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
       accept: "application/json",
@@ -23,7 +23,7 @@ export default async function PostersPage({ params }) {
   });
 
   if (!images_res.ok) {
-    throw new Error(`Failed to fetch movie images. Id: ${id} Status: ${images_res.status}`);
+    throw new Error(`Failed to fetch movie images. Id: ${seriesid} Status: ${images_res.status}`);
   }
 
   const movie_images = await images_res.json();

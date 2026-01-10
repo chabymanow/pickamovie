@@ -239,7 +239,7 @@ export default async function viewDetails({ params }) {
             <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Seasons</h2>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {series.seasons.map((season) => (
-                    <Link key={season.id} className="w-full border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300" href={`./${series.id}/seriesseason/${season.season_number}`}>
+                    <Link key={season.id} className="w-full border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300" href={`/series/viewDetails/${seriesid}/seriesseason/${season.season_number}`}>
                         <div className="w-full flex flex-row justify-start items-center gap-3 flex-nowrap">
                             <img src={season.poster_path ? `https://image.tmdb.org/t/p/w185${season.poster_path}` : `https://image.tmdb.org/t/p/w185${series.poster_path}`}
                                         alt={season.name}
@@ -270,7 +270,7 @@ export default async function viewDetails({ params }) {
         <section className="mb-20 px-2 lg:px-20">
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Backdrops</h2>
-                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${series.id}/backdrops`}>
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${seriesid}/backdrops`}>
                     See all...
                 </Link>
             </div>
@@ -298,7 +298,7 @@ export default async function viewDetails({ params }) {
             
             <div className="flex flex-row justify-between items-center">
                 <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Posters</h2>
-                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${series.id}/posters`}>
+                <Link className="py-1 px-6 rounded-2xl text-md font-light w-fit bg-slate-300 shadow-md shadow-slate-400 hover:bg-slate-400 hover:shadow-sm" href={`/series/viewDetails/${seriesid}/posters`}>
                     See all...
                 </Link>
             </div>
