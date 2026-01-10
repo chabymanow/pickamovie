@@ -36,7 +36,7 @@ export default async function Popular() {
                 <img
                   src={
                     movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
+                      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                       : "/assets/images/no_image.png"
                   }
                   alt={movie.title}
