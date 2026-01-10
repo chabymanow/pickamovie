@@ -300,7 +300,7 @@ export default async function viewDetails({ params }) {
                         <Link href={`/moviepage/${recom.id}`} className="group block">
                             <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="relative aspect-video overflow-hidden">
-                                    <Image
+                                    <img
                                     src={recom.poster_path ? `https://image.tmdb.org/t/p/w500${recom.poster_path}` : "/assets/images/no_image.png"}
                                     alt={recom.original_title}
                                     fill

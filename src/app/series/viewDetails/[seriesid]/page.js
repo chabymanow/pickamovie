@@ -13,7 +13,7 @@ export default async function viewDetails({ params }) {
 
     const movie_images = await series.images;
     const movie_details = await series.external_ids;
-    const production_companies = await series.production_companies;
+    const series_recommendations = await series.recommendations;
 
     const backdropUrl = `https://image.tmdb.org/t/p/w500${series.backdrop_path}`;
     const posterUrl = `https://image.tmdb.org/t/p/w500${series.poster_path}`;
@@ -42,12 +42,12 @@ export default async function viewDetails({ params }) {
   const visible_posters = posters.slice(0, 8);
 
   return (
-    <div>
-      <div className="relative isolate flex flex-row justify-center md:justify-start items-center w-full min-h-dvh md:min-h-[70vh] p-7 overflow-hidden bg-stone-800">
+    <div className="">
+      <div className="relative isolate flex flex-row justify-center md:justify-start items-center w-screen mx-auto min-h-dvh md:min-h-[70vh] p-7 overflow-hidden bg-stone-800">
 
       {/* background image layer */}
       <div className="absolute inset-0 z-0">
-          <img src={series.poster_path} alt="" className="w-full h-full object-cover object-top blur-[3px] opacity-40" />
+          <img src={backdropUrl} alt="" className="w-full h-full object-cover object-top blur-[3px] opacity-40" />
 
         {/* 2) colour tint (this is what makes it “red/orange-ish”) */}
         <div
@@ -68,7 +68,7 @@ export default async function viewDetails({ params }) {
       </div>
 
       {/* content */}
-      <div className="relative w-full lg:w-[80%] lg:ml-10 flex flex-row gap-5 text-white flex-wrap md:flex-nowrap">
+      <div className="relative w-full max-w-600 xl:mx-auto lg:w-[80%] flex flex-row gap-5 text-white flex-wrap md:flex-nowrap">
         <img className="w-96 aspect-2/3 mx-auto md:mx-0 shadow-md shadow-gray-700"
           src={posterUrl}
           alt={series.title}
@@ -135,32 +135,7 @@ export default async function viewDetails({ params }) {
         </div>
       </div>
     </div>
-
-        {/* <section className="p-5 px-6 lg:px-20 background-white">
-          <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Details</h2>
-          <div className="w-full">
-                  <h2 className="text-xl font-semibold mb-4">Production Companies</h2>
-                  <div className="w-full h-fit flex flex-row flex-wrap justify-between gap-10">
-                      {production_companies.map((comp) => 
-                          <div key={comp.id}>
-                              <p className="mb-2 text-center">{comp.name}</p>
-                              <Image
-                                  src={
-                                      comp.logo_path
-                                      ? `https://image.tmdb.org/t/p/original${comp.logo_path}`
-                                      : "/assets/images/no_logo.png"
-                                  }
-                                  alt={comp.name}
-                                  width={200}
-                                  height={200}
-                                  className="w-24 md:w-32 max-w-52 h-auto rounded-md"
-                              />
-                          </div>
-                      )}
-                  </div>
-            </div>
-        </section> */}
-
+    <div className="max-w-600 mx-auto">
         <section className="f-full flex flex-row flex-wrap justify-between items-center gap-10 px-5 lg:px-20 mt-10">
             <div className="w-full md:w-4/12 text-md md:text-md lg:text-lg">
                 <h2 className="text-xl font-semibold mb-4">Details</h2>
@@ -237,7 +212,7 @@ export default async function viewDetails({ params }) {
 
         <section className="mb-20 px-2 lg:px-20">
             <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Seasons</h2>
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="w-full max-w-600 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 {series.seasons.map((season) => (
                     <Link key={season.id} className="w-full border border-slate-300 rounded-lg overflow-hidden shadow-md shadow-slate-300" href={`/series/viewDetails/${seriesid}/seriesseason/${season.season_number}`}>
                         <div className="w-full flex flex-row justify-start items-center gap-3 flex-nowrap">
@@ -323,33 +298,35 @@ export default async function viewDetails({ params }) {
             </div>
         </section>
         
-        {/* <section>
-          {movie_recommendations.results.length !== 0 ? (<>
-            <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Recommendations</h2>
-            <div className="w-full flex py-2 gap-6 overflow-x-auto overflow-y-hidden [scrollbar-gutter:stable]">
-                {movie_recommendations.results.map((recom) => (
-                    <div key={recom.id} className="shrink-0 w-72">
-                        <Link href={`/moviepage/${recom.id}`} className="group block">
-                            <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                                <div className="relative aspect-video overflow-hidden">
-                                    <Image
-                                    src={recom.poster_path ? `https://image.tmdb.org/t/p/w500${recom.poster_path}` : "/assets/images/no_image.png"}
-                                    alt={recom.original_title}
-                                    fill
-                                    sizes="288px"
-                                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
-                                    />
-                                </div>
-                            </div>
+            <section className="mb-20 px-2 lg:px-20">
+                {series_recommendations.results.length !== 0 ? (<>
+                    <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Recommendations</h2>
+                    <div className="w-full flex py-2 gap-6 overflow-x-auto overflow-y-hidden [scrollbar-gutter:stable]">
+                        {series_recommendations.results.map((recom) => (
+                            <div key={recom.id} className="shrink-0 w-72">
+                                <Link href={`/series/viewDetails/${recom.id}`} className="group block">
+                                    <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="relative aspect-video overflow-hidden">
+                                            <img
+                                            src={recom.backdrop_path ? `https://image.tmdb.org/t/p/w500${recom.backdrop_path}` : "/assets/images/no_image.png"}
+                                            alt={recom.original_title}
+                                            fill
+                                            sizes="288px"
+                                            className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+                                            />
+                                        </div>
+                                    </div>
 
-                            <p className="mt-2 mb-3 text-sm font-medium text-slate-900 line-clamp-1">
-                                {recom.original_title}
-                            </p>
-                        </Link>
-                    </div>
-                ))}
-            </div></>): null}
-        </section> */}
+                                    <p className="mt-2 mb-3 text-md font-semibold text-slate-900 line-clamp-1">
+                                        {recom.original_name}
+                                    </p>
+                                </Link>
+                            </div>
+                        ))}
+                    </div></>
+                ): null}
+            </section>
+        </div>
       </div>
   );
 

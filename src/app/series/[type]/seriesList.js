@@ -78,16 +78,14 @@ export default function SeriesList({ type }) {
             >
               <div className="group w-full flex flex-col rounded-xl relative overflow-hidden shadow-md">
                 {/* Poster box with stable aspect ratio */}
-                <div className="relative w-full aspect-2/3">
-                <img
-                  src={
-                    s.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${s.poster_path}`
-                      : "/assets/images/no_image.png"
+                <div className="w-full h-72 relative mb-2 flex-1">
+                  <img src={ s.poster_path 
+                    ? `https://image.tmdb.org/t/p/w500${s.poster_path}` 
+                    : "/assets/images/no_image.png"
                   }
-                  alt={series.original_name ?? "Series poster"}
-                  className="w-full h-full object-cover"
-                />
+                    alt={series.original_name ?? "Series poster"}
+                    className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110 shadow-lg shadow-slate-400 hover:shadow-2xl hover:shadow-gray-500"
+                  />
                 </div>
 
                 <div className="w-10 h-10 flex items-center justify-center rounded-full p-2 text-white bg-slate-900 border-2 border-orange-500 text-sm absolute top-2 right-2 font-mono font-bold shadow-md">

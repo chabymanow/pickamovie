@@ -150,7 +150,7 @@ export default async function MoviePage({ params }) {
                       {production_companies.map((comp) => 
                           <div key={comp.id}>
                               <p className="mb-2 text-center">{comp.name}</p>
-                              <Image
+                              <img
                                   src={
                                       comp.logo_path
                                       ? `https://image.tmdb.org/t/p/original${comp.logo_path}`
@@ -224,7 +224,7 @@ export default async function MoviePage({ params }) {
                     <div key={image.filePath} className="group rounded-xl overflow-hidden shrink-0 w-96">
                         <a className="block" href={`https://image.tmdb.org/t/p/original${image.filePath}`} target="_blank" rel="noopener noreferrer">
                             <div className="relative aspect-video overflow-hidden">
-                                <Image
+                                <img
                                     src={
                                         image.filePath
                                         ? `https://image.tmdb.org/t/p/w500${image.filePath}`
@@ -251,7 +251,7 @@ export default async function MoviePage({ params }) {
                 {visible_posters.map((image) => (
                     <p key={image.filePath} className="group rounded-xl overflow-hidden shrink-0 w-96">
                         <a href={`https://image.tmdb.org/t/p/original${image.filePath}`} target="_blank">
-                            <Image
+                            <img
                                 src={
                                     image.filePath
                                     ? `https://image.tmdb.org/t/p/w500${image.filePath}`
@@ -277,7 +277,7 @@ export default async function MoviePage({ params }) {
                         <Link href={`/moviepage/${recom.id}`} className="group block">
                             <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="relative aspect-video overflow-hidden">
-                                    <Image
+                                    <img
                                     src={recom.poster_path ? `https://image.tmdb.org/t/p/w500${recom.poster_path}` : "/assets/images/no_image.png"}
                                     alt={recom.original_title}
                                     fill

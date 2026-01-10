@@ -108,7 +108,7 @@ export default async function Home() {
                   <Link href={`/moviepage/${movie.id}`} className="group block">
                       <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                           <div className="relative aspect-2/3 overflow-hidden">
-                              <Image
+                              <img
                               src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/assets/images/no_image.png"}
                               alt={movie.original_title}
                               fill
@@ -140,7 +140,7 @@ export default async function Home() {
                   <Link href={`/moviepage/${movie.id}`} className="group block">
                       <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                           <div className="relative aspect-2/3 overflow-hidden">
-                              <Image
+                              <img
                               src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/assets/images/no_image.png"}
                               alt={movie.original_title}
                               fill

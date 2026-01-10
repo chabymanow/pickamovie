@@ -24,28 +24,31 @@ export default async function viewDetails({ params }) {
         <section className="w-screen mx-auto flex flex-col justify-start gap-5">
             {seasons.episodes.map((episode) => (
                 <div key={episode.id} className="w-screen">
-                    <div className="w-10/12 flex flex-col lg:flex-row justify-start gap-2 mx-auto mb-5">
-                        <img src={episode.still_path ? `https://image.tmdb.org/t/p/w500${episode.still_path}` : `https://image.tmdb.org/t/p/w500${series.poster_path}`}
-                            alt={episode.name}
-                            width={640}
-                            height={480}
-                            className="w-full lg:w-100 shrink max-w-200 aspect-video"
-                        />
-                        <div>
-                            <p className="text-lg font-bold">{episode.name}</p>
-                            <p className="text-md">Episode: <span className="font-semibold">{episode.episode_number}</span></p>
-                            <p className="text-md">Air Date: 
-                                <span className="font-semibold ml-2">
-                                    {new Date(episode.air_date).toLocaleDateString("en-GB", {
-                                        day: "2-digit",
-                                        month: "2-digit",
-                                        year: "numeric",
-                                    })}
-                                </span>
-                            </p>
-                            <p className="text-md">{episode.overview}</p>
-                        </div>
+                    <div className="w-10/12 mx-auto flex flex-col justify-center items-start gap-3">
+                        <p className="text-2xl">Episode: <span className="font-semibold">{episode.episode_number}</span></p>
+                        <div className="w-full flex flex-col lg:flex-row justify-start gap-2 mx-auto mb-5">
                         
+                            <img src={episode.still_path ? `https://image.tmdb.org/t/p/w500${episode.still_path}` : `https://image.tmdb.org/t/p/w500${series.poster_path}`}
+                                alt={episode.name}
+                                width={640}
+                                height={480}
+                                className="w-full lg:w-100 shrink max-w-200 aspect-video"
+                            />
+                            <div>
+                                <p className="text-lg font-bold">{episode.name}</p>
+                                
+                                <p className="text-md">Air Date: 
+                                    <span className="font-semibold ml-2">
+                                        {new Date(episode.air_date).toLocaleDateString("en-GB", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                        })}
+                                    </span>
+                                </p>
+                                <p className="text-md">{episode.overview}</p>
+                            </div>
+                        </div>
                     </div>
                     
                     {episode.crew.length !== 0 ? (

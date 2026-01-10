@@ -21,7 +21,7 @@ export default function MovieCast({ movie_cast }){
                  <Link key={member.id} href={`/people/persondetails/${member.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
                 <div className="group bg-gray-100 rounded-lg overflow-hidden flex flex-col border border-gray-300 shadow-md hover:shadow-lg hover:cursor-pointer h-90 z-10">
                     <div className="relative overflow-hidden h-full">
-                        <Image
+                        <img
                             src={
                                 member.profile_path
                                 ? `https://image.tmdb.org/t/p/w500${member.profile_path}`

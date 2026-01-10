@@ -57,7 +57,7 @@ export default function ByGenre({ genreId, genreName  }) {
           >
             <div className="group w-full h-115 flex flex-col rounded-xl relative overflow-hidden shadow-gray-400 shadow-md hover:shadow-sm hover:shadow-gray-700 transition-transform duration-600 ease-out">
               <div className="w-full h-72 relative mb-2 flex-1">
-                <Image
+                <img
                   src={
                     movie.poster_path
                       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`

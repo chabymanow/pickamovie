@@ -50,12 +50,12 @@ export default function Header() {
         <div className="flex items-center justify-between md:justify-start px-4 h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 mr-10">
-            <Image
+            <img
               src="/assets/images/logo.png"
               alt="Pick A Movie"
               width={120}
               height={50}
-              priority
+              priority="true"
             />
           </Link>
 

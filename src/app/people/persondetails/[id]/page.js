@@ -10,7 +10,7 @@ function MovieCard({ cast }) {
   return (
     <div className="w-full min-w-80 border border-slate-300 rounded-lg flex gap-2 overflow-hidden shadow-md shadow-slate-300 hover:bg-slate-100 hover:shadow-sm">
       <div className="w-16 min-w-16 md:min-w-20 aspect-2/3 relative">
-        <Image
+        <img
           src={
             cast.poster_path
               ? `https://image.tmdb.org/t/p/w185${cast.poster_path}`
@@ -63,7 +63,7 @@ export default async function Popular({ params }) {
             <section className="w-screen h-fit bg-linear-to-b from-slate-500 to-slate-800 pb-5">
                 <div className="w-11/12 lg:w-10/12 max-w-500 flex flex-row flex-wrap justify-center lg:justify-start items-center gap-5 mx-auto pt-5">
                     <div className="w-64 aspect-2/3 relative rounded-2xl overflow-hidden  shadow-lg shadow-slate-900 border border-slate-200/50">
-                        <Image
+                        <img
                             src={
                             person.profile_path
                                 ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
@@ -208,7 +208,7 @@ export default async function Popular({ params }) {
                         <div key={p.file_path} className="group rounded-lg overflow-hidden flex flex-col shadow-md">
                             <a href={`https://image.tmdb.org/t/p/original${p.file_path}`} target="_blank" rel="noopener noreferrer">
                                 <div className="relative overflow-hidden h-full">
-                                    <Image
+                                    <img
                                         src={
                                             p.file_path
                                             ? `https://image.tmdb.org/t/p/w185${p.file_path}`
