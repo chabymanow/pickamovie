@@ -3,7 +3,6 @@ import Link from "next/link";
 import { averageColorFromUrl, rgbToCss } from "@/lib/avgColor";
 import { notFound } from "next/navigation";
 import { fetchSeries } from "@/lib/fetchData";
-import SeriesReviews from "./SeriesReviews";
 
 export default async function viewDetails({ params }) {
     const { id } = await params;
@@ -136,31 +135,6 @@ export default async function viewDetails({ params }) {
       </div>
     </div>
 
-        {/* <section className="p-5 px-6 lg:px-20 background-white">
-          <h2 className="text-3xl font-bold mt-8 mb-4 text-slate-800">Details</h2>
-          <div className="w-full">
-                  <h2 className="text-xl font-semibold mb-4">Production Companies</h2>
-                  <div className="w-full h-fit flex flex-row flex-wrap justify-between gap-10">
-                      {production_companies.map((comp) => 
-                          <div key={comp.id}>
-                              <p className="mb-2 text-center">{comp.name}</p>
-                              <Image
-                                  src={
-                                      comp.logo_path
-                                      ? `https://image.tmdb.org/t/p/original${comp.logo_path}`
-                                      : "/assets/images/no_logo.png"
-                                  }
-                                  alt={comp.name}
-                                  width={200}
-                                  height={200}
-                                  className="w-24 md:w-32 max-w-52 h-auto rounded-md"
-                              />
-                          </div>
-                      )}
-                  </div>
-            </div>
-        </section> */}
-
         <section className="f-full flex flex-row flex-wrap justify-between items-center gap-10 px-5 lg:px-20 mt-10">
             <div className="w-full md:w-4/12 text-md md:text-md lg:text-lg">
                 <h2 className="text-xl font-semibold mb-4">Details</h2>
@@ -259,10 +233,6 @@ export default async function viewDetails({ params }) {
                     </div>
                 ))}
             </div>
-        </section>
-
-        <section className="px-5 lg:px-20 mb-10 background-white">
-            <SeriesReviews series_reviews = {series_reviews} />
         </section>
 
         <section className="mb-20 px-2 lg:px-20">
