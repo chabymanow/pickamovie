@@ -280,7 +280,6 @@ export default async function MoviePage({ params }) {
                                     <img
                                     src={recom.poster_path ? `https://image.tmdb.org/t/p/w500${recom.poster_path}` : "/assets/images/no_image.png"}
                                     alt={recom.original_title}
-                                    fill
                                     sizes="288px"
                                     className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
                                     />

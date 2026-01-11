@@ -17,7 +17,7 @@ function MovieCard({ cast }) {
               : "/assets/images/no_image.png"
           }
           alt={cast.title ?? cast.name ?? "Title"}
-          fill
+          fill = "true"
           className="object-cover"
         />
       </div>
@@ -70,7 +70,7 @@ export default async function Popular({ params }) {
                                 : "/assets/images/no_image.png"
                             }
                             alt={person.name}
-                            fill
+                            fill = "true"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 240px, 208px"
                             className="object-cover"
                         />
@@ -152,7 +152,7 @@ export default async function Popular({ params }) {
                     <div className="relative">
                         <input id="moviesToggle" type="checkbox" className="peer sr-only" />
                     
-                        <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-hidden max-h-[500px] peer-checked:max-h-[9999px] transition-[max-height] duration-500 mb-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 px-2 gap-5 overflow-x-hidden overflow-y-scroll max-h-[500px] peer-checked:max-h-[9999px] transition-[max-height] duration-500 mb-10">
                             {act_movie.map((cast) => (
                                 <Link key={cast.credit_id} href={`/moviepage/${cast.id}`} className="w-full">
                                 <MovieCard cast={cast} />

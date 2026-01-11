@@ -14,7 +14,7 @@ export default function HomeHeader({ movie_discover }){
             }
             alt={movie_discover[0].original_title}
             fill
-                priority
+                priority="true"
                 className="object-cover"
             />
 

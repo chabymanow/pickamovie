@@ -310,7 +310,7 @@ export default async function viewDetails({ params }) {
                                             <img
                                             src={recom.backdrop_path ? `https://image.tmdb.org/t/p/w500${recom.backdrop_path}` : "/assets/images/no_image.png"}
                                             alt={recom.original_title}
-                                            fill
+                                            fill = "true"
                                             sizes="288px"
                                             className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
                                             />

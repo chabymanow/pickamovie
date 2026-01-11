@@ -47,7 +47,7 @@ export default function Header() {
     <header className="w-full">
       <nav className="relative z-50 bg-slate-100 w-full border-b border-slate-500 text-slate-800 shadow-2xl">
         {/* Top bar */}
-        <div className="flex items-center justify-between md:justify-start px-4 h-16">
+        <div className="w-full flex items-center justify-between md:justify-start px-4 h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 mr-10">
             <img
@@ -60,7 +60,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="w-full hidden md:flex items-center gap-4">
             {/* Movies dropdown */}
             <div className="relative group">
               <button
@@ -129,6 +129,14 @@ export default function Header() {
                 <NavLink href="/people/trending">Trending</NavLink>
               </div>
             </div>
+            
+              <div className="w-fit flex flex-row justify-start items-center flex-nowrap gap-1 ml-auto">
+                <form action="/search" method="get">
+                  <input className="shadow-sm shadow-slate-300 mr-3 rounded-lg h-8 w-52 border border-slate-300" type="text" name="q" />
+                    <button type="submit" className="w-fit h-fit border border-green-500 bg-green-400 py-1 px-4 rounded-lg">Search</button>
+                </form>
+              </div>
+            
           </div>
 
           {/* Mobile hamburger */}
@@ -180,6 +188,8 @@ export default function Header() {
                   <NavLink href="/people/trending" onClick={() => setMobileOpen(false)}>Trending</NavLink>
                 </div>
               </div>
+              <NavLink href="/search">Search</NavLink>
+
             </div>
           </div>
         )}

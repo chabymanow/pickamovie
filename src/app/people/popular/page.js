@@ -54,7 +54,14 @@ export default function PopularPeople() {
         {error && <p className="mb-4 text-red-600">{error}</p>}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 max-w-400 mx-auto">
           {people.map((person) => (
-            <Link key={person.id} href={`./persondetails/${person.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
+            <Link key={person.id} href={`-
+            
+            
+            
+            
+            
+            
+            /${person.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
             <div className="group w-full h-115 flex flex-col rounded-2xl relative overflow-hidden shadow-gray-400 shadow-md hover:shadow-sm hover:shadow-gray-700 transition-transform duration-600 ease-out">
               <div className="w-full h-72 relative flex-1">
                 <img
