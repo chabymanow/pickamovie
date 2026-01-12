@@ -76,22 +76,19 @@ export default function SeriesList({ type }) {
               href={`./viewDetails/${s.id}`}
               className="block w-full text-sm font-semibold"
             >
-              <div className="group w-full flex flex-col rounded-xl relative overflow-hidden shadow-md">
-                {/* Poster box with stable aspect ratio */}
-                <div className="w-full h-72 relative mb-2 flex-1">
+            <div className="group w-full aspect-2/3 flex flex-col rounded-xl relative overflow-hidden shadow-gray-400 shadow-md hover:shadow-sm hover:shadow-gray-700 transition-transform duration-600 ease-out">
+              <div className="w-full h-72 relative mb-2 flex-1">
                   <img src={ s.poster_path 
                     ? `https://image.tmdb.org/t/p/w500${s.poster_path}` 
                     : "/assets/images/no_image.png"
                   }
                     alt={series.original_name ?? "Series poster"}
-                    className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110 shadow-lg shadow-slate-400 hover:shadow-2xl hover:shadow-gray-500"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110"
                   />
                 </div>
 
-                <div className="w-10 h-10 flex items-center justify-center rounded-full p-2 text-white bg-slate-900 border-2 border-orange-500 text-sm absolute top-2 right-2 font-mono font-bold shadow-md">
-                  {Math.round((s.vote_average ?? 0) * 10)}%
-                </div>
-
+                <div className="absolute bottom-0 left-0 right-0 z-20 h-20 bg-gray-600/25 backdrop-blur-sm">
+                <div className="w-full h-full p-2 text-white">
                 <div className="px-2 pb-3 pt-3">
                   <p className="text-md font-semibold">{s.original_name}</p>
                   <p className="text-sm font-light">
@@ -105,6 +102,8 @@ export default function SeriesList({ type }) {
                       : "N/A"}
                   </p>
                 </div>
+                </div>
+              </div>
               </div>
             </Link>
           ))}

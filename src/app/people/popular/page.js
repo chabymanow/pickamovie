@@ -54,14 +54,7 @@ export default function PopularPeople() {
         {error && <p className="mb-4 text-red-600">{error}</p>}
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 max-w-400 mx-auto">
           {people.map((person) => (
-            <Link key={person.id} href={`-
-            
-            
-            
-            
-            
-            
-            /${person.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
+            <Link key={person.id} href={`/people/persondetails/${person.id}`} className="block w-full sm:max-w-full md:w-60 lg:w-64 text-sm font-semibold" >
             <div className="group w-full h-115 flex flex-col rounded-2xl relative overflow-hidden shadow-gray-400 shadow-md hover:shadow-sm hover:shadow-gray-700 transition-transform duration-600 ease-out">
               <div className="w-full h-72 relative flex-1">
                 <img
@@ -73,19 +66,17 @@ export default function PopularPeople() {
                   alt={person.original_name}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 240px, 208px"
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+                  className="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-110"
                 />
-          
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[45%]
-                      bg-white/30 backdrop-blur-2xl mask-[linear-gradient(to_top,black_10%,black_30%,transparent_100%)]
-                      [-webkit-mask-image:linear-gradient(to_top,black_10%,black_30%,transparent_100%)]" ></div>
               </div>
 
-              <div className="absolute bottom-7 left-3 px-2 py-4 h-14 z-20 text-white">
-                <p className="text-lg font-semibold">{person.name}</p>
-                <p className="text-sm font-light text-white/80">
-                  Original Name: {person.original_name}
-                </p>
+              <div className="absolute bottom-0 left-0 right-0 z-20 h-20 bg-gray-600/25 backdrop-blur-sm">
+                <div className="w-full h-full p-4 text-white">
+                  <p className="text-lg font-semibold">{person.name}</p>
+                  <p className="text-sm font-light text-white/80">
+                    Original Name: {person.original_name}
+                  </p>
+                </div>
               </div>
             </div>
           </Link>

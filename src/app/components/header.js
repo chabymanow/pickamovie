@@ -126,13 +126,12 @@ export default function Header() {
                 role="menu"
               >
                 <NavLink href="/people/popular">Popular People</NavLink>
-                <NavLink href="/people/trending">Trending</NavLink>
               </div>
             </div>
             
               <div className="w-fit flex flex-row justify-start items-center flex-nowrap gap-1 ml-auto">
                 <form action="/search" method="get">
-                  <input className="shadow-sm shadow-slate-300 mr-3 rounded-lg h-8 w-52 border border-slate-300" type="text" name="q" />
+                  <input className="shadow-sm shadow-slate-300 mr-3 rounded-lg h-8 md:w-50 lg:w-96 border border-slate-300" type="text" name="q" />
                     <button type="submit" className="w-fit h-fit border border-green-500 bg-green-400 py-1 px-4 rounded-lg">Search</button>
                 </form>
               </div>
@@ -185,7 +184,6 @@ export default function Header() {
                 <p className="px-4 text-xs font-semibold uppercase tracking-wide text-slate-500">People</p>
                 <div className="mt-1">
                   <NavLink href="/people/popular" onClick={() => setMobileOpen(false)}>Popular People</NavLink>
-                  <NavLink href="/people/trending" onClick={() => setMobileOpen(false)}>Trending</NavLink>
                 </div>
               </div>
               <NavLink href="/search">Search</NavLink>
